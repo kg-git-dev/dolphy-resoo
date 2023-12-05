@@ -7,7 +7,7 @@ const page = async () => {
   const city = "ontario";
 
 
-  const url =`https://api.bridgedataoutput.com/api/v2/OData/itso/Property?access_token=f36a468ba28f13fc2076c91b1e6eaf13&$top=50&$orderby=ModificationTimestamp desc&$filter=PropertyType eq 'Residential'`;
+  const url =`http://localhost:3000/residential/Properties`;
 const options = {
   method: "GET",
 };
