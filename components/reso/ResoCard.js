@@ -20,8 +20,8 @@ const ResoCard = ({ curElem, city }) => {
             <div className="img-text ">
               <p className="m-0 "> {timeAgo(new Date(curElem.PixUpdtedDt))}</p>
             </div>
-            {curElem.Media.length > 0 ? (
-              <img src={curElem.Media[0].MediaURL} className="imghei" />
+            {curElem?.Media?.length > 0 ? (
+              <img src={"#"} className="imghei" />
             ) : (
               <p>NO Image</p>
             )}

@@ -11,6 +11,12 @@
       "static/chunks/main-app.js",
       "static/css/app/ontario/page.css",
       "static/chunks/app/ontario/page.js"
+    ],
+    "/ontario/[city]/[listingID]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/ontario/[city]/[listingID]/page.css",
+      "static/chunks/app/ontario/[city]/[listingID]/page.js"
     ]
   }
 }

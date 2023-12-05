@@ -3,16 +3,24 @@ import Link from "next/link";
 import React from "react";
 import SearchBar from "@/components/reso/SearchBar";
 
-const page = async () => {
-  const city = "Ontario";
+//ENDPOINTS
+import { resenditial } from "@/api/routes";
 
-  const url = `localhost:3000/residential/Properties/?$limit=10&$skip=0&$select=Province=${city}`;
+const page = async () => {
+  const province = "Ontario";
+
+  const url = resenditial.properties.replace(
+    "$query",
+    `?$limit=10&$skip=0&$select=Province='${province}'`
+  );
+
   const options = {
     method: "GET",
   };
   const res = await fetch(url, options);
   const data = await res.json();
-  const main_data = data.results();
+
+  const main_data = data.results;
 
   return (
     <>
@@ -42,13 +50,13 @@ const page = async () => {
         </div>
         <h1 className="main-title d-flex text-capitalize pt-4">
           {" "}
-          {city} Homes for Sale | Real Estate Updated Daily Listings
+          {province} Homes for Sale | Real Estate Updated Daily Listings
         </h1>
         <p>
-          Refine your <span className="text-capitalize">{city}</span> real
+          Refine your <span className="text-capitalize">{province}</span> real
           estate search by price, bedroom, or type (house, townhouse, or condo).
           View up-to-date MLS® listings in{" "}
-          <span className="text-capitalize">{city}</span> .
+          <span className="text-capitalize">{province}</span> .
         </p>
 
         <div className="pt-3 row row-cols-md-4 ">
