@@ -1,4 +1,3 @@
 {
-  "/ontario/[city]/[listingID]/page": "app/ontario/[city]/[listingID]/page.js",
   "/ontario/page": "app/ontario/page.js"
 }

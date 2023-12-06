@@ -6,7 +6,6 @@ import Gallery from "@/components/reso/Gallery";
 import Link from "next/link";
 import SearchBar from "@/components/reso/SearchBar";
 
-
 export function timeAgo(modificationTimestamp) {
   const currentTime = new Date();
   const modificationTime = new Date(modificationTimestamp);
@@ -41,7 +40,7 @@ const page = async ({ params }) => {
 
   const res = await fetch(url, options);
   const data = await res.json();
-  const main_data = data;
+  const main_data = data.rows[0]; //always a single object inside the array
 
   function capitalizeFirstLetter(str) {
     return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
@@ -68,46 +67,49 @@ const page = async ({ params }) => {
   return (
     <>
       <div className="container-fluid pt-3">
-      <div className="input-group input-group-search me-2 me-md-0 mb-5 ">
+        <div className="input-group input-group-search me-2 me-md-0 mb-5 ">
           <SearchBar />
-         
-            <button
-              className="input-group-text btn bg-light2 bg-lh mybtn d-block py-search"
-              type="button"
-              aria-label="Search Button"
+
+          <button
+            className="input-group-text btn bg-light2 bg-lh mybtn d-block py-search"
+            type="button"
+            aria-label="Search Button"
+          >
+            <svg
+              aria-hidden="true"
+              className="svg"
+              viewBox="0 0 30 30"
+              xmlns="http://www.w3.org/2000/svg"
+              height="25"
+              width="25"
             >
-              <svg
-                aria-hidden="true"
-                className="svg"
-                viewBox="0 0 30 30"
-                xmlns="http://www.w3.org/2000/svg"
-                height="25"
-                width="25"
-              >
-                <path
-                  d="M20.756 18.876l6.155 6.154-1.88 1.881-6.155-6.155A9.269 9.269 0 0 1 13.3 22.61a9.31 9.31 0 1 1 9.31-9.31c0 2.091-.69 4.021-1.854 5.576zM13.3 19.95a6.65 6.65 0 1 0 0-13.3 6.65 6.65 0 0 0 0 13.3z"
-                  fill="#000000"
-                ></path>
-              </svg>
-            </button>
-         
+              <path
+                d="M20.756 18.876l6.155 6.154-1.88 1.881-6.155-6.155A9.269 9.269 0 0 1 13.3 22.61a9.31 9.31 0 1 1 9.31-9.31c0 2.091-.69 4.021-1.854 5.576zM13.3 19.95a6.65 6.65 0 1 0 0-13.3 6.65 6.65 0 0 0 0 13.3z"
+                fill="#000000"
+              ></path>
+            </svg>
+          </button>
         </div>
-     
-      <nav style={{'--bs-breadcrumb-divider': 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'8\' height=\'8\'%3E%3Cpath d=\'M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z\' fill=\'%236c757d\'/%3E%3C/svg%3E")'}} aria-label="breadcrumb">
-      <ol className="breadcrumb fs-6 ps-2">
-        <li className="breadcrumb-item ">
-          <Link href="/ontario">
-            ON
-          </Link>
-        </li>
-        <li className="breadcrumb-item ">
-          <Link href={`/ontario/${city}/`}>
-            {data.City}
-          </Link>
-        </li>
-        <li className="breadcrumb-item active" aria-current="page"># {data.StreetNumber} - {data.StreetName} {data.StreetSuffix}</li>
-      </ol>
-    </nav>
+
+        <nav
+          style={{
+            "--bs-breadcrumb-divider":
+              "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E\")",
+          }}
+          aria-label="breadcrumb"
+        >
+          <ol className="breadcrumb fs-6 ps-2">
+            <li className="breadcrumb-item ">
+              <Link href="/ontario">ON</Link>
+            </li>
+            <li className="breadcrumb-item ">
+              <Link href={`/ontario/${city}/`}>{data.City}</Link>
+            </li>
+            <li className="breadcrumb-item active" aria-current="page">
+              # {data.StreetNumber} - {data.StreetName} {data.StreetSuffix}
+            </li>
+          </ol>
+        </nav>
         <Gallery data={main_data} />
       </div>
 
@@ -125,15 +127,15 @@ const page = async ({ params }) => {
                   </p>
                   <p className="tet-s fw-bold">
                     <span className="">
-                      <i class="fa-solid fa-bed card-icon"></i>{" "}
+                      <i className="fa-solid fa-bed card-icon"></i>{" "}
                       {data.ITSO_BedsAboveGrade + data.ITSO_BedsBelowGrade} Bed
                     </span>
                     <span className="px-4">
-                      <i class="fa-solid fa-bath card-icon"></i>{" "}
+                      <i className="fa-solid fa-bath card-icon"></i>{" "}
                       {data.BathroomsTotalInteger} Bath
                     </span>
                     <span className="">
-                      <i class="fa-sharp fa-solid fa-ruler"></i>{" "}
+                      <i className="fa-sharp fa-solid fa-ruler"></i>{" "}
                       {data.BuildingAreaTotal} Sqft
                     </span>
                   </p>
@@ -150,7 +152,7 @@ const page = async ({ params }) => {
                     </p>
                     <p className="tet-s fw-bold px-3">
                       {" "}
-                      <i class="bi bi-caret-right-fill"></i>{" "}
+                      <i className="bi bi-caret-right-fill"></i>{" "}
                       {data.ITSO_TransactionType}
                     </p>
                   </div>

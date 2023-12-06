@@ -30,14 +30,14 @@ const ResoCard = ({ curElem, city }) => {
               <p className="mb-0 card-price">{price}</p>
               <p className="mb-0 tet-s d-flex">
                 <span className="">
-                  <i class="fa-solid fa-bed card-icon"></i> {curElem.Bedrooms}{" "}
-                  Bed
+                  <i className="fa-solid fa-bed card-icon"></i>{" "}
+                  {curElem.Bedrooms} Bed
                 </span>
                 <span className="px-4">
-                  <i class="fa-solid fa-bath card-icon"></i> 2 Bath
+                  <i className="fa-solid fa-bath card-icon"></i> 2 Bath
                 </span>
                 <span className="">
-                  <i class="fa-sharp fa-solid fa-ruler"></i>{" "}
+                  <i className="fa-sharp fa-solid fa-ruler"></i>{" "}
                   {curElem.ApproxSquareFootage} Sqft
                 </span>
               </p>
