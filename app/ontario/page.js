@@ -60,7 +60,7 @@ const page = async () => {
         </p>
 
         <div className="pt-3 row row-cols-md-4 ">
-          {main_data.map((curElem) => {
+          {main_data.map((curElem, index) => {
             return (
               <ResoCard
                 city={curElem?.Municipality.toLowerCase()}
