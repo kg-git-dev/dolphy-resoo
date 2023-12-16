@@ -40,7 +40,8 @@ const ResoCard = ({ curElem, city }) => {
                   {curElem.Bedrooms} Bed
                 </span>
                 <span className="px-4">
-                  <i className="fa-solid fa-bath card-icon"></i> 2 Bath
+                  <i className="fa-solid fa-bath card-icon"></i>{" "}
+                  {curElem.Washrooms} Bath
                 </span>
                 <span className="">
                   <i className="fa-sharp fa-solid fa-ruler"></i>{" "}
