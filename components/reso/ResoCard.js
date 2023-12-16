@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import React from "react";
 import { timeAgo } from "@/app/ontario/[city]/[listingID]/page";
@@ -18,6 +19,11 @@ const ResoCard = ({ curElem, city }) => {
     return mapObj[matched];
   });
 
+  const handleImageError = (e) => {
+    e.target.onerror = null;
+    e.target.src = `noimage.webp`;
+  };
+
   return (
     <>
       <div className="col">
@@ -30,7 +36,12 @@ const ResoCard = ({ curElem, city }) => {
               <p className="m-0 "> {timeAgo(new Date(curElem.PixUpdtedDt))}</p>
             </div>
 
-            <img src={imgSrc} className="imghei" alt={curElem.MLS} />
+            <img
+              src={imgSrc}
+              className="imghei"
+              alt={curElem.MLS}
+              onError={handleImageError}
+            />
 
             <div className="card-textt card">
               <p className="mb-0 card-price">{price}</p>
