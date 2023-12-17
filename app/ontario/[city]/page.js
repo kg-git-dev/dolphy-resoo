@@ -20,7 +20,6 @@ const page = async ({ params }) => {
   const data = await res.json();
   const main_data = data.results;
 
-  // console.log(main_data[0]);
   function capitalizeFirstLetter(str) {
     return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
   }
