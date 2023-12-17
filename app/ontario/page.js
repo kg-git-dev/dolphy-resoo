@@ -49,7 +49,6 @@ const page = async () => {
           </button>
         </div>
         <h1 className="main-title d-flex text-capitalize pt-4">
-          {" "}
           {province} Homes for Sale | Real Estate Updated Daily Listings
         </h1>
         <p>

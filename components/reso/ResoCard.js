@@ -21,7 +21,7 @@ const ResoCard = ({ curElem, city }) => {
 
   const handleImageError = (e) => {
     e.target.onerror = null;
-    e.target.src = `noimage.webp`;
+    e.target.src = `/noimage.webp`;
   };
 
   return (
