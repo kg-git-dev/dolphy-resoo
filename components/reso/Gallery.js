@@ -1,5 +1,8 @@
 "use client";
-import LightGallery from "lightgallery/react";
+import dynamic from "next/dynamic";
+const LightGallery = dynamic(() => import("lightgallery/react"), {
+  ssr: false,
+});
 // import styles
 import "lightgallery/css/lightgallery.css";
 import "lightgallery/css/lg-zoom.css";
@@ -17,12 +20,12 @@ const Gallery = ({ data }) => {
     <>
       <LightGallery onInit={onInit} speed={500} plugins={[lgThumbnail, lgZoom]}>
         <div className=" row row-cols-md-3 g-3 ">
-          {data.Media.length > 0 ? (
-            data.Media.slice(0, 6).map((media, index) => (
+          {data.length > 0 ? (
+            data.slice(0, 6).map((url, index) => (
               <div key={index}>
-                <a href={`${media.MediaURL}`}>
+                <a href={`${url}`}>
                   <img
-                    src={media.MediaURL}
+                    src={url}
                     className="prj-detail-img"
                     alt={`Image ${index + 1}`}
                   />

@@ -6,6 +6,7 @@ import Gallery from "@/components/reso/Gallery";
 import Link from "next/link";
 import SearchBar from "@/components/reso/SearchBar";
 import { resenditial } from "@/api/routes";
+import { generateImageURLs } from "@/helpers/generateImageURLs";
 
 export function timeAgo(modificationTimestamp) {
   const currentTime = new Date();
@@ -48,6 +49,8 @@ const page = async ({ params }) => {
 
   const main_data = data.results[0]; //always a single object inside the array
 
+  const imageURLs = generateImageURLs(listingID);
+
   function capitalizeFirstLetter(str) {
     return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
   }
@@ -66,10 +69,11 @@ const page = async ({ params }) => {
     }
   }
 
-  const price = formatCurrency(main_data.ListPrice);
-  const TaxAnnualAmount = formatCurrency(main_data.Taxes);
-  const AssociationFee = formatCurrency(main_data.AddlMonthlyFees);
+  const price = formatCurrency(main_data?.ListPrice);
+  const TaxAnnualAmount = formatCurrency(main_data?.Taxes);
+  const AssociationFee = formatCurrency(main_data?.AddlMonthlyFees);
 
+  console.log(main_data);
   return (
     <>
       <div className="container-fluid pt-3">
@@ -117,7 +121,7 @@ const page = async ({ params }) => {
             </li>
           </ol>
         </nav>
-        {/* <Gallery data={main_data} /> */}
+        <Gallery data={imageURLs} />
       </div>
 
       <section>
