@@ -1,1 +1,1 @@
-export const BASE_URL = "http://162.219.178.202";
+export const BASE_URL = "https://pricetrackernepal.com";
