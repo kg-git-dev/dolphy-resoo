@@ -6,7 +6,11 @@ import SearchBar from "@/components/reso/SearchBar";
 //ENDPOINTS
 import { resenditial } from "@/api/routes";
 
+export const dynamic = "force-dynamic";
+export const fetchCache = "force-no-store";
+
 const page = async () => {
+
   const province = "Ontario";
 
   const url = resenditial.properties.replace(

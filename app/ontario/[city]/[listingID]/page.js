@@ -73,7 +73,6 @@ const page = async ({ params }) => {
   const TaxAnnualAmount = formatCurrency(main_data?.Taxes);
   const AssociationFee = formatCurrency(main_data?.AddlMonthlyFees);
 
-  console.log(main_data);
   return (
     <>
       <div className="container-fluid pt-3">
